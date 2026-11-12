@@ -1,0 +1,19 @@
+First off, I wrote this myself. I KNOW there’s oxford commas and stuff.
+I wrote like that first, sue me. ChatGPT is a weak facsimmaly.
+	
+Here’s the good (and lowkey obvious given how Sega did the same on the Gen/MD) news. A Genesis compatibility layer for the Saturn is feasible. Plus, as a bonus, most of the hardware can
+be translated or run essentially natively, rather than emulated. The M68Ks and the sound chip’s Zilog Z80 need extra software to work right now, but I’m currently trying to see if I can get the damn thing to just run at least the main Genesis CPU code right on the SCSP’s 68k.
+ 	
+	There is a pretty good chance that as cool as that would be, it just won’t work out, especially with all the DMA stuff that’ll need. So for now, here’s my plan:
+
+	The sheer number of processors in the Saturn means that there’s a good chance that all of the 68Ks can be recompiled on the fly and have their jobs handled by the SH-2s without making the system chug. The SCSP is more than up to the task of running the Genesis’ (Genesi? Genesises?) sound and noise channels, plus the Sega CD’s PCM functionality, and as long as I can figure out a solution for getting the Saturn to make PWM sound into PCM, the 32X’s extra channels as well. Scaled planes, skies and floors are very easy because of VDP2. Sprites and the extra layer(s?) drawn by the 32X are handled by VDP1, and both the FM synthesis and noise/percussion channels can be handled by the Saturn’s (may I just point out OUTRAGEOUSLY powerful) soundchip, with a custom sound driver for the MC68EC000.
+There’s even a chance that developers far more talented than me can enhance the music for games with the SCSP-DSP’s effects, or even add more channels of sound to games, given how stupidly powerful the SCSP is for a console soundchip from 1994 (Have I mentioned how bonkers that thing is enough? Seriously, look it up. Devs were flat out just brute forcing compressed audio into games using software, and just decoding it with the 68K. That fuckin sound chip is more powerful than the Master System. PS: furnace tracker dev team, get on ts, I know yall are planning YMF292 support and people can do insane stuff with that thing!)
+
+Hopefully, eventually with this research Saturn owners can get their console to do what it should’ve done with that cartridge slot back in 94’. Which is be able to run (legally dumped!) Gen/MD ROMs on a stock Saturn with a burned CD + Pseudo Saturn Kai, or a Satiator or Saroo or whatever else.
+
+As for my priority in this research, it goes like this:
+Stock Genesis first and foremost → Then the Sega CD (Specifically Sonic CD first because that’s the best classic Sonic game, FIGHT ME) → then the 32X, aaaand maybe the full CD32X tower of power monstrosity (idk why you’d need that because all the official CD32X games are hot BUNS, but ig if you want to play Doom CD32X fusion)
+
+Hopefully once I’ve gotten stuff running, an adapter for the cartridge slot is possible, and that slot’s massive security flaws means that if CD32X is just too much, the CD block’s SH-1 can be used to help. So far everything seems to suggest you can’t get to that thing without using either the cartridge port or the MPEG decompressor card slot. Makes sense for a security feature but insane work to just leave so much processing power on the table like that. (Man idk what Japanese drugs Sega was on designing this thing but I want whatever they were smoking.)
+
+This’ll probably get changed as time goes on, so take everything I say with a grain of salt.
